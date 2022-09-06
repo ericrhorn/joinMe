@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
+
+        <h2>Update Event</h2>
+        
+        <form method="POST" id="id_add_event_form">
+            {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for="event_name">Event Name</label>
+                <input class="form-control" type="text" name="event_name" id="id_event_name" required value="{{form.initial.event_name}}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="price">Price</label>
+                <input class="form-control" type="text" name="price" id="id_price" required value="{{form.initial.price}}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="start_time">Start Time set for {{form.initial.start_time}}</label><p>Change time below or leave blank if ok</p>
+                <input class="form-control" type="time" name="start_time" id="id_start_time">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="end_time">End Time set for {{form.initial.end_time}}</label><p>Change time below or leave blank if ok</p>
+                <input class="form-control" type="time" name="end_time" id="id_end_time">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="start_date">Start Date</label>
+                <input class="form-control" type="date" name="start_date" id="id_start_date" value="{{form.initial.start_date}}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="end_date">Start Date</label>
+                <input class="form-control" type="date" name="end_date" id="id_end_date" value="{{form.initial.end_date}}">
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="private_event" id="id_private_event" value="True" value="{{form.initial.private_event}}">
+                <label class="form-check-label" for="private_event">
+                Private Event
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="public_event" id="id_public_event" value="{{form.initial.public_event}}">
+                <label class="form-check-label" for="public_event">
+                Public Event
+                </label>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="description">Description</label>
+                <textarea class="form-control" name="description" id="id_description" cols="50" rows="5" required >{{form.initial.description}}</textarea>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="event_notes">Notes</label>
+                <textarea class="form-control" name="event_notes" id="id_event_notes" cols="50" rows="2" placeholder="Sunscreen, Lawn Seating, Over 21, Family Friendly BYOB...?">{{form.initial.event_notes}}</textarea>
+            </div>
+            <div>
+                <label for="">Your private venues will NOT show for other users</label>
+                <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                    <option selected>Choose a Venue</option>
+                    {% for venue in venue_list %}
+                        {% if venue.private_venue == True and venue.owner.id == request.user.id %}
+                            <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.name }}</option>
+                        {% endif %}
+                        {% if venue.private_venue != True %}
+                        <option  name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.name }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'events:new_venue' %}">Add Venue</a>                     
+            <div style="margin-top: 10px;">
+                <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
+                <button class="btn btn-primary" type="text">Submit</button>
+            </div>
+        </form>
+    </div>    
+</body>
+</html>
+{% endblock content %}

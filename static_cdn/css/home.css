@@ -1,0 +1,31 @@
+.about_info{
+    min-width: 200px;
+    width: 500px;
+    margin-top: 3em;
+    font-family: sans-serif;
+    color: white;
+    margin-left: 50px;
+    padding-right: 100px;
+}
+
+.home_headder {
+    text-align: center;
+    padding-top: 100px;
+}
+
+input{
+    margin-bottom: 10px;
+} */
+
+/* .navbar{
+    padding-left: 10px;
+}
+
+.eventBox{
+    margin: 50px;
+    padding: 10px;
+    border-style: solid;
+    border-color: black;
+    width: 800px;
+    height: 200px;
+}

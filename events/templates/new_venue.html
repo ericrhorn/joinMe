@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
+        
+        <!-- <div class="row" style="padding-left: 25px;"> -->
+            {% if submitted %}
+            <div class="row" style="max-width: 600px; height: 100px; align-items: center;">
+                <h4>Your venue was added successfully</h4>
+                <div>
+                    <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-outline-primary btn-sm" type="button">Dashboard</button></a>
+                    <a href="{#% url 'account:view' user_id=request.user.id %#}"><button class="btn btn-outline-primary btn-sm" type="button">Account</button></a>
+                    <a href="{% url 'events:new_venue' %}"><button class="btn btn-outline-primary btn-sm" type="button">Add Another Venue</button></a>
+                    <a href="{% url 'events:new_event' %}"><button class="btn btn-outline-primary btn-sm" type="button">Add A New Event</button></a>
+                </div>
+            </div>
+            {% else %}
+        <!-- </div> -->
+
+        <h2>Add a Venue</h2>
+            
+        <form  method="POST">
+        {% csrf_token %}
+            <div class="mb-3 mt-3">
+                <label for="Name">Location Name</label>
+                <input class="form-control" type="text" name="name" id="id_name"></input>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="address">Street Address</label>
+                <input class="form-control" type="text" name="address" id="id_address"></input>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="state">State</label>
+                <input class="form-control" type="text" name="state" id="id_state"></input>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="city">City</label>
+                <input class="form-control" type="text" name="city" id="id_city"></input>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="zip_code">Zip Code</label>
+                <input class="form-control" type="text" name="zip_code" id="id_zip_code"></input>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="web_address">web_address</label>
+                <input class="form-control" type="url" name="web_address" id="id_web_address" blank="True"></input>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="private_venue" id="id_private_venue" value="True">
+                <label class="form-check-label" for="private_venue">
+                Private Venue
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="public_venue" id="id_public_venue" value="True">
+                <label class="form-check-label" for="public_venue">
+                Public Venue
+                </label>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="venue_notes">Notes</label>
+                <textarea class="form-control" name="venue_notes" id="id_venue_notes" cols="50" rows="2" placeholder="Parking location, hills, long walk from the parking lot...?"></textarea>
+            </div>
+            <div>
+                <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
+                <button class="btn btn-primary" type="text">Submit</button>
+            </div>
+        </form>
+        {% endif %}
+    </div>    
+</body>
+</html>
+{% endblock content %}

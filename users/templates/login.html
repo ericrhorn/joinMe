@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+</head>
+<body>
+    <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
+    <h2>User Login</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3 mt-3">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+        </div>
+        <div class="mb-3">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+        </div>
+        {% for field in login_form %}
+        <p>
+            {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+        {% endfor %}
+        {% if login_form.non_field_errors %}
+        <div style="color: red">
+        <p>{{ login_form.non_field_errors }}</p>
+        </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div>
+        <a href="{#% url 'password_reset' %#}">Reset Password</a>
+    </div>
+    </div>
+</body>
+</html>
+{% endblock content %}
