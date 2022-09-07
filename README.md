@@ -1,6 +1,5 @@
 # joinMe
-# Is It Burnt?
->A recipe app for everyday use
+>An event app designed so you never miss a great time.
 
 ## Table of Contents
 
@@ -14,18 +13,15 @@
 * [Contact](#contact)
 
 ## Info
-Is It Burnt is an easy to use web application designed to allow users to create an account and search and save recipes to their profile.
+Join me is an easy to use web application designed to allow users to creat events, join events, and share events with friends.
 
 <div align='center'>Is It Burnt</div>
 <br/>
 <div align='center'>
-<img src="./home-page.png">
+<img src="./joinmehome.png">
 </kbd>
 <kbd>
-<img src="./my-res.png">
-</kbd>
-<kbd>
-<img src="./search-res.png">
+<img src="./joinmedash.png">
 </kbd>
 </div>
 
@@ -41,42 +37,37 @@ Project Video Coming Soon
 ### Frontend
 * HTML
 * CSS
-* React.js
-* React-dom
-* React-router-dom
-* react-scripts
-* Gatsbyjs/reach-router
-* Axios
 * Bootstrap
-* React-bootstrap
-* Cors
+* Javascript
 
 ### Backend
-* Node.js
-* Express
-* Mongoose
-* Cors
-* Dotenv
+* Django
+* Python
 * Bcrypt
-* Cookie-parser
-* JWT
-
+* PostgreSQL Database
+* Psycopg2
+* Pillow
 
 ## Features
-* Full stack MERN web application utilizing: MongoDB, Express, REACT, Node.
-* Authorization and authentication implemented with JWT and bcrypt.
-* Users can create accounts through application.
-* Recipe searches are generated through Spoonacular API.
-* Users can save recipes to their account and view them on their dashboard.
-* Users can view, edit, and delete recipes.
+* Authorization and authnetication inplemented with Django and bcrypt
+* Django admin pannel
+* Django forms for creating events and users
+* Users can create accounts though the applicaiton
+* Users can create, view, edit, and delete events
+
+## Features in progress
+* Users can add friends and create private and group chats
+* Users can like and view liked events on their dashboard
+* User account page with the ability to change and update user info and passwords
+* Addition of google maps to view event locaitons 
 
 ## Status
 
-Is It Burnt is up to date and functional. Future updates will include the ability for users to save meal plan data to their accounts, share recipes with other users, and add more user data. 
+Join me is in progress with the above features being added currently 
 
 ## Inspiration
 
-I have a love for cooking and searching recipies online. As I cook my wife will always ask "is it burnt?" so I decided to name my web app after her favorite question to ask me as I cook.
+My family and I love to attend events in our area. I found it difficult to search the many differnt City, County, and venue websites to see the events and their info. Join me will bring all those events to one place for easy viewing. 
 
 ## Contact
 Created by [Eric Horn](www.linkedin.com/in/eric-horn-60143454)
