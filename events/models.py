@@ -19,6 +19,9 @@ class Venue(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
 
 def get_event_image_filepath(self, filename):
     return f'profile_images/{self.pk}/{"profile_image.png"}'

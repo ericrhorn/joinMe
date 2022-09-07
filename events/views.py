@@ -47,12 +47,12 @@ def new_venue_view(request, *args, **kwargs):
 
 def update_event(request, event_id):
     # updated = False
-    context = {}
+    # context = {}
     venue_list = Venue.objects.all()
-    context['venue_list'] = venue_list
+    # context['venue_list'] = venue_list
     event = Event.objects.get(pk=event_id)
-    context['eevnt'] = event
-    form =eventUpdateForm(request.POST, instance=event, 
+    # context['eevnt'] = event
+    form =eventUpdateForm(request.POST or None, instance=event,
         initial={
             'id' : event.pk,
             'event_name' : event.event_name,
@@ -68,11 +68,11 @@ def update_event(request, event_id):
             'venue' : event.venue,
         }
     )
-    context['form'] = form
+    # context['form'] = form
     if form.is_valid():
         form.save()
         return redirect('/')
-    return render(request, "update_event.html", context)
+    return render(request, "update_event.html", {'event' : event, 'form' : form , 'venue_list' : venue_list})
 
 
 

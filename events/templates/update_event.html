@@ -15,7 +15,32 @@
     <div class="container mt-5 rounded-3 shadow p-3 bg-body" style="width: 500px; background-color: white;">
 
         <h2>Update Event</h2>
-        
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <!-- <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{#% url 'events:new_venue' %#}">Add Venue</a>                     
+            <div style="margin-top: 10px;">
+                <a href="{#% url 'account:dashboard' user_id=request.user.id %#}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                <button class="btn btn-primary" type="reset" value="reset">Clear Form</button> -->
+                <!-- <div style="padding-bottom: 15px;">
+                    <label for="">Your private venues will NOT show for other users</label>
+                    <p>Current Venue: {{form.initial.venue}}</p>
+                    <select style="margin-top: 10px;" class="form-select form-select-sm" aria-label=".form-select-sm example" form="id_add_event_form" name="venue">
+                        <option selected>Choose a Venue</option>
+                        {% for venue in venue_list %}
+                            {% if venue.private_venue == True and venue.owner.id == request.user.id %}
+                                <option name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.name }}</option>
+                            {% endif %}
+                            {% if venue.private_venue != True %}
+                            <option  name="venue" id="id_venue" value="{{ venue.pk }}">{{ venue.name }}</option>
+                        {% endif %}
+                        {% endfor %}
+                    </select>
+                </div> -->
+                <button class="btn btn-primary" type="text">Submit</button>
+            </div>
+        </form>
+<!--          
         <form method="POST" id="id_add_event_form">
             {% csrf_token %}
             <div class="mb-3 mt-3">
@@ -28,22 +53,22 @@
             </div>
             <div class="mb-3 mt-3">
                 <label for="start_time">Start Time set for {{form.initial.start_time}}</label><p>Change time below or leave blank if ok</p>
-                <input class="form-control" type="time" name="start_time" id="id_start_time">
+                <input class="form-control" type="text" name="start_time" id="id_start_time">
             </div>
             <div class="mb-3 mt-3">
                 <label for="end_time">End Time set for {{form.initial.end_time}}</label><p>Change time below or leave blank if ok</p>
-                <input class="form-control" type="time" name="end_time" id="id_end_time">
+                <input class="form-control" type="text" name="end_time" id="id_end_time">
             </div>
             <div class="mb-3 mt-3">
                 <label for="start_date">Start Date</label>
-                <input class="form-control" type="date" name="start_date" id="id_start_date" value="{{form.initial.start_date}}">
+                <input class="form-control" type="text" name="start_date" id="id_start_date" value="{{form.initial.start_date}}">
             </div>
             <div class="mb-3 mt-3">
                 <label for="end_date">Start Date</label>
-                <input class="form-control" type="date" name="end_date" id="id_end_date" value="{{form.initial.end_date}}">
+                <input class="form-control" type="text" name="end_date" id="id_end_date" value="{{form.initial.end_date}}">
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" name="private_event" id="id_private_event" value="True" value="{{form.initial.private_event}}">
+                <input class="form-check-input" type="checkbox" name="private_event" id="id_private_event" value="{{form.initial.private_event}}">
                 <label class="form-check-label" for="private_event">
                 Private Event
                 </label>
@@ -76,13 +101,13 @@
                     {% endfor %}
                 </select>
             </div>
-            <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{% url 'events:new_venue' %}">Add Venue</a>                     
+            <a class="btn btn-outline-primary btn-sm" style="margin-top: 10px;" role="button" href="{#% url 'events:new_venue' %#}">Add Venue</a>                     
             <div style="margin-top: 10px;">
-                <a href="{% url 'account:dashboard' user_id=request.user.id %}"><button class="btn btn-primary" type="button">Cancel</button></a>
+                <a href="{#% url 'account:dashboard' user_id=request.user.id %#}"><button class="btn btn-primary" type="button">Cancel</button></a>
                 <button class="btn btn-primary" type="reset" value="reset">Clear Form</button>
                 <button class="btn btn-primary" type="text">Submit</button>
             </div>
-        </form>
+        </form> -->
     </div>    
 </body>
 </html>
